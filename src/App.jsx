@@ -1,6 +1,6 @@
 import componentsImg from './assets/components.png';
 import { CORE_CONCEPTS } from './data.js';
-import HeaderAdd from './components/Header.jsx'
+import HeaderAdd from './components/Header/Header.jsx'
 import { CoreConcept } from './components/CoreConcepts.jsx';
 
 
