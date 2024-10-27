@@ -4,16 +4,18 @@ import HeaderAdd from './components/Header/Header.jsx'
 import { CoreConcept } from './components/CoreConcepts.jsx';
 import TabButton from './components/TabButton.jsx';
 import { useState } from 'react';
-
+import { EXAMPLES } from './data.js'
 
 
 
 function App() {
-  let tabContent = 'click a button to update text';
+  // let tabContent = 'component';
   const [selectedTopic, // change what
      setSelectedTopic// updated to what
-  ] = useState('Please click a button'); //Please click a button = what should be the default value or start value
+  ] = useState('components'); //Please click a button = what should be the default value or start value
+  
   console.log("APP_COMPONENT_RENDERING");
+
   function handleSelect(selectedButton){
     console.log("selected handle Select for button => "+ selectedButton );
     // tabContent = selectedButton;
@@ -40,12 +42,24 @@ function App() {
         <section id = "examples">
             <h2>Examples</h2>
             <menu>
-              <TabButton onSelect={()=>handleSelect('Component')}>Component</TabButton>
-              <TabButton onSelect={function (){handleSelect('JSX')}}>Jsx</TabButton> 
-              <TabButton onSelect={()=>handleSelect('Props')}>Props</TabButton>
-              <TabButton onSelect={()=>handleSelect('State')}>State</TabButton>
+              <TabButton onSelect={()=>handleSelect('components')}>Component</TabButton>
+              <TabButton onSelect={function (){handleSelect('jsx')}}>Jsx</TabButton> 
+              <TabButton onSelect={()=>handleSelect('props')}>Props</TabButton>
+              <TabButton onSelect={()=>handleSelect('state')}>State</TabButton>
             </menu>
-            {selectedTopic}
+            <div id='tab-content'>
+              <h3>
+                  {EXAMPLES[selectedTopic].title}
+              </h3>
+              <p>
+                  {EXAMPLES[selectedTopic].description}
+              </p>
+              <pre>
+                <code>
+                {EXAMPLES[selectedTopic].code}
+                </code>
+              </pre>
+            </div>
         </section>
         <h2>Time to get started!</h2>
       </main>
