@@ -3,17 +3,25 @@ import { CORE_CONCEPTS } from './data.js';
 import HeaderAdd from './components/Header/Header.jsx'
 import { CoreConcept } from './components/CoreConcepts.jsx';
 import TabButton from './components/TabButton.jsx';
+import { useState } from 'react';
 
 
 
 
 function App() {
   let tabContent = 'click a button to update text';
+  const [selectedTopic, // change what
+     setCurrentTopic// updated to what
+  ] = useState('Please click a button'); //Please click a button = what should be the default value or start value
   console.log("APP_COMPONENT_RENDERING");
   function handleSelect(selectedButton){
     console.log("selected handle Select for button => "+ selectedButton );
-    tabContent = selectedButton;
-    console.log("updated tabContent => "+ tabContent );
+    // tabContent = selectedButton;
+    // console.log("updated tabContent => "+ tabContent );
+    console.log("#initial_selected topic is "+selectedTopic);
+    setCurrentTopic(selectedButton)
+    console.log("#after_setCurrentTopic_ :selected topic is "+selectedTopic);
+    console.log("setCurrentTopic topic is "+setCurrentTopic);
   }
 
   return (
@@ -37,7 +45,7 @@ function App() {
               <TabButton onSelect={()=>handleSelect('Props')}>Props</TabButton>
               <TabButton onSelect={()=>handleSelect('State')}>State</TabButton>
             </menu>
-            {tabContent}
+            {selectedTopic}
         </section>
         <h2>Time to get started!</h2>
       </main>
