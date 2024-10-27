@@ -11,7 +11,7 @@ import { useState } from 'react';
 function App() {
   let tabContent = 'click a button to update text';
   const [selectedTopic, // change what
-     setCurrentTopic// updated to what
+     setSelectedTopic// updated to what
   ] = useState('Please click a button'); //Please click a button = what should be the default value or start value
   console.log("APP_COMPONENT_RENDERING");
   function handleSelect(selectedButton){
@@ -19,9 +19,9 @@ function App() {
     // tabContent = selectedButton;
     // console.log("updated tabContent => "+ tabContent );
     console.log("#initial_selected topic is "+selectedTopic);
-    setCurrentTopic(selectedButton)
+    setSelectedTopic(selectedButton)
     console.log("#after_setCurrentTopic_ :selected topic is "+selectedTopic);
-    console.log("setCurrentTopic topic is "+setCurrentTopic);
+    console.log("setCurrentTopic topic is "+setSelectedTopic);
   }
 
   return (
