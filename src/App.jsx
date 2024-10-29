@@ -12,7 +12,7 @@ function App() {
   // let tabContent = 'component';
   const [selectedTopic, // change what
      setSelectedTopic// updated to what
-  ] = useState('components'); //Please click a button = what should be the default value or start value
+  ] = useState(''); //Please click a button = what should be the default value or start value
   
   console.log("APP_COMPONENT_RENDERING");
 
@@ -47,19 +47,29 @@ function App() {
               <TabButton onSelect={()=>handleSelect('props')}>Props</TabButton>
               <TabButton onSelect={()=>handleSelect('state')}>State</TabButton>
             </menu>
+            {/* this  */}
+            {!selectedTopic ? <p> Please select a topic</p> : null }
+            {/* or this */}
+            {/* {!selectedTopic && <p> Please select a topic</p> } */}
+
+            {selectedTopic ? 
+            (
             <div id='tab-content'>
-              <h3>
-                  {EXAMPLES[selectedTopic].title}
-              </h3>
-              <p>
-                  {EXAMPLES[selectedTopic].description}
-              </p>
-              <pre>
-                <code>
-                {EXAMPLES[selectedTopic].code}
-                </code>
-              </pre>
-            </div>
+            <h3>
+                {EXAMPLES[selectedTopic].title}
+            </h3>
+            <p>
+                {EXAMPLES[selectedTopic].description}
+            </p>
+            <pre>
+              <code>
+              {EXAMPLES[selectedTopic].code}
+              </code>
+            </pre>
+          </div>)
+          : null }
+
+            
         </section>
         <h2>Time to get started!</h2>
       </main>
