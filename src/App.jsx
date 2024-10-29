@@ -15,7 +15,22 @@ function App() {
   ] = useState(''); //Please click a button = what should be the default value or start value
   
   console.log("APP_COMPONENT_RENDERING");
-
+  let tabContent = <p> Please click a button</p>;
+  if(selectedTopic){
+    tabContent = <div id='tab-content'>
+    <h3>
+        {EXAMPLES[selectedTopic].title}
+    </h3>
+    <p>
+        {EXAMPLES[selectedTopic].description}
+    </p>
+    <pre>
+      <code>
+      {EXAMPLES[selectedTopic].code}
+      </code>
+    </pre>
+  </div>;
+  }
   function handleSelect(selectedButton){
     console.log("selected handle Select for button => "+ selectedButton );
     // tabContent = selectedButton;
@@ -47,28 +62,7 @@ function App() {
               <TabButton onSelect={()=>handleSelect('props')}>Props</TabButton>
               <TabButton onSelect={()=>handleSelect('state')}>State</TabButton>
             </menu>
-            {/* this  */}
-            {!selectedTopic ? <p> Please select a topic</p> : null }
-            {/* or this */}
-            {/* {!selectedTopic && <p> Please select a topic</p> } */}
-
-            {selectedTopic ? 
-            (
-            <div id='tab-content'>
-            <h3>
-                {EXAMPLES[selectedTopic].title}
-            </h3>
-            <p>
-                {EXAMPLES[selectedTopic].description}
-            </p>
-            <pre>
-              <code>
-              {EXAMPLES[selectedTopic].code}
-              </code>
-            </pre>
-          </div>)
-          : null }
-
+            {tabContent}
             
         </section>
         <h2>Time to get started!</h2>
