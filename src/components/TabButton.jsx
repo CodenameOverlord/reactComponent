@@ -2,7 +2,7 @@
 //     return <li><button>{props.children}</button></li>
 // }
 
-export default function TabButton({children, onSelect}){
+export default function TabButton({children, onSelect, isSelected}){
     console.log('TabButton component rendering')
-    return <li><button onClick={onSelect}>{children}</button></li>
+    return <li><button className={isSelected? 'active': undefined} onClick={onSelect}>{children}</button></li>
 }
